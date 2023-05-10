@@ -20,7 +20,7 @@ app.use('/api/users', usersRouter);
 app.use('/api/courses', coursesRouter);
 
 try {
-    await mongoose.connect('mongodb+srv://alexpinaida39760:xHCGeiHfxtywJWXe@cluster39760ap.abysesb.mongodb.net/?retryWrites=true&w=majority');
+    await mongoose.connect('mongodb+srv://alexpinaida39760:xHCGeiHfxtywJWXe@cluster39760ap.abysesb.mongodb.net/ecommerce?retryWrites=true&w=majority');
     console.log('DB CONNECTED')
 } catch (error) {
     console.log(error);
