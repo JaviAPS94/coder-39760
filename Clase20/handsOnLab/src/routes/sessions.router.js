@@ -29,6 +29,7 @@ router.post('/register', async (req, res) => {
 
 router.post('/login', async (req, res) => {
     try {
+        console.log(req.session?.user)
         const { email, password } = req.body;
 
         // if(email === 'asdadssad' && password === 'asdasd') {
@@ -68,5 +69,9 @@ router.get('/logout', (req, res) => {
         res.redirect('/')
     })
 });
+
+router.get('/test', (req, res) => {
+    console.log(req.session?.user)
+})
 
 export default router;
