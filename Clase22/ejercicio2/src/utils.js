@@ -37,6 +37,13 @@ export const passportCall = (strategy) => {
     }
 }
 
+export const authorization = (role) => {
+    return async (req, res, next) => {
+        if(req.user.role != role) return res.status(403).send({error: 'Not permissions'});
+        next();
+    }
+}
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 

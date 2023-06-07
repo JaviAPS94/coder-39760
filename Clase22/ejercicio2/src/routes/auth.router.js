@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { authToken, generateToken, passportCall } from '../utils.js';
+import { authToken, authorization, generateToken, passportCall } from '../utils.js';
 import passport from 'passport';
 
 const router = Router();
@@ -39,6 +39,7 @@ router.post('/login', async (req, res) => {
         const { email, password } = req.body;
 
         const user = users.find(user => user.email === email && user.password === password);
+        user.role = 'user';
 
         if (!user) return res.status(400).send({ status: 'error', error: 'Invalid credentials' });
 
@@ -57,7 +58,7 @@ router.get('/current', passport.authenticate('jwt', { session: false }), (req, r
     res.send({ status: 'success', payload: req.user });
 });
 
-router.get('/current-custom', passportCall('jwt'), (req, res) => {
+router.get('/current-custom', passportCall('jwt'), authorization('admin'), (req, res) => {
     res.send({ status: 'success', payload: req.user });
 });
 

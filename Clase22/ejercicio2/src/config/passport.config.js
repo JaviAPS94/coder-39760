@@ -10,7 +10,7 @@ const initializePassport = () => {
         secretOrKey: 'coder39760'
     }, async (jwt_payload, done) => {
         try {
-            if(!jwt_payload.jkhasdfakshdf) return done(null, false, { messages: 'User not found' })
+            // if(!jwt_payload.jkhasdfakshdf) return done(null, false, { messages: 'User not found' })
             return done(null, jwt_payload.user);
             //req.user = {}
         } catch (error) {
