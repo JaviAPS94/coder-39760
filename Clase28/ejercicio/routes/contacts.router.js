@@ -3,14 +3,9 @@ import { Router } from 'express';
 //import Contacts from '../dao/memory/contact.memory.js';
 //Import DAO mongo
 // import Contacts from '../dao/mongo/contact.mongo.js';
-import Contacts from '../dao/factory.js';
-import ContactDto from '../dao/DTOs/contact.dto.js';
-import ContactRepository from '../repositories/contacts.repository.js';
+import { contactsRepository } from '../repositories/index.js';
 
 const router = Router();
-
-const contacts = new Contacts();
-const contactsRepository = new ContactRepository(contacts);
 
 router.get('/', async (req, res) => {
     // const data = await contacts.get();

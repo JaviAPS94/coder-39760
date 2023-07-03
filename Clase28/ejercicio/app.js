@@ -1,5 +1,6 @@
 import express from 'express';
 import contactsRouter from './routes/contacts.router.js';
+import productsRouter from './routes/products.router.js';
 // import mongoose from 'mongoose';
 
 const app = express();
@@ -7,6 +8,7 @@ const app = express();
 app.use(express.json());
 
 app.use('/api/contacts', contactsRouter);
+app.use('/api/products', productsRouter);
 
 // try {
 //     await mongoose.connect('mongodb+srv://alexpinaida39760:xHCGeiHfxtywJWXe@cluster39760ap.abysesb.mongodb.net/clase28?retryWrites=true&w=majority');
