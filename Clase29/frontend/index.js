@@ -7,7 +7,7 @@ fetch("http://localhost:8080/api/orders")
       const priceParagraph = document.createElement("p");
       const statusParagraph = document.createElement("p");
       const number = document.createElement("p");
-      priceParagraph.innerHTML = `Total de la orden: ${order.totalPrice}`;
+      priceParagraph.innerHTML = `Total de la orden: ${order.total_price}`;
       statusParagraph.innerHTML = `Estado: ${order.status}`;
       number.innerHTML = `Numero de orden: ${order.number}`;
       div.appendChild(number);

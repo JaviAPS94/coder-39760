@@ -51,6 +51,7 @@ const createOrder = async (req, res) => {
 
         res.send({ status: 'success', result });
     } catch (error) {
+        console.log(error);
         res.status(500).send({ status: 'error', message: error.message });
     }
 }
