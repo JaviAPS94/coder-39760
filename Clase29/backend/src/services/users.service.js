@@ -3,6 +3,10 @@ import UsersRepository from '../repositories/users.repository.js';
 const usersRepository = new UsersRepository();
 
 const createUser = async(user) => {
+    //Valido el stock del producto
+    // if (si no pasamos la validadion) {
+    //     throw new StockError('stock');
+    // }
     const result = await usersRepository.createUser(user);
     return result;
 }
