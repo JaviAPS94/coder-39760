@@ -1,0 +1,30 @@
+config:
+  plugin:
+    metrics-by-endpoint: {}
+  target: 'http://localhost:3010'
+  phases:
+    - duration: 20
+      arrivalRate: 10
+scenarios:
+  - name: 'Generar usuario mockeado y crear cuenta de usuario'
+    flow:
+      - log: 'Generando un usuario nuevo mockeado'
+      - get:
+          url: '/api/faker'
+          capture:
+            - json: "$.name"
+              as: "name"
+            - json: "$.lastname"
+              as: "lastname"
+            - json: "$.email"
+              as: "email"
+            - json: "$.password"
+              as: "password"
+      - log: 'Creando el usuario: {{ email }}'
+      - post:
+          url: '/api/users'
+          json:
+            name: "{{ name }}"
+            lastname: "{{ lastname}}"
+            email: "{{ email }}"
+            password: "{{ password }}"
