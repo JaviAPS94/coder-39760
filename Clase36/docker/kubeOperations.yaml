@@ -1,0 +1,45 @@
+#Configuración del servicio load balancer
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubeservice
+spec:
+  selector:
+    app: kubeoperations
+  ports:
+    - port: 80
+      targetPort: 8080
+  type: LoadBalancer
+---
+#versión del recurso que estamos trabajando
+apiVersion: apps/v1
+#El tipo de recurso, esta enfocado a nuestros conttenedores
+kind: Deployment
+#El nombre con el cual será reconocida estta aplicación
+metadata:
+  name: kubeoperations
+#Spec describe las especificaciones de lo que queremos que se implemente con este recurso
+spec:
+  #es el número de pods que se generarán en nuestro cluster de kubernetes
+  replicas: 5
+  #Hace referencia a que seleccione las instancias que cuenten con el label indicado
+  selector:
+    matchLabels:
+      app: kubeoperations
+  #Es la plantilla de nuestro pod, de manera que aquí vamos a describir los detalles que contendrá dicho pod
+  template:
+    metadata:
+      labels:
+        app: kubeoperations
+    #especificaciones de nuestro pod
+    spec:
+      #aquí definimos la característica de nuestros contenedor que va a tener el pod
+      containers:
+      - name: kubecontainer
+        image: alexp39760/operaciones-docker-hub:1.0.0
+        ports:
+          - containerPort: 8080
+        env: 
+          - name: MONGO_URL
+            value: test
+        imagePullPolicy: Always
