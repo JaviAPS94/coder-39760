@@ -22,7 +22,7 @@ export default class UsersRouter extends Router {
             res.sendSuccess({ accessToken });
         });
 
-        this.post('/register', ['PUBLIC'], passportStrategiesEnum.NOTHING, async (req, res) => {
+        this.post('/register-test', ['PUBLIC'], passportStrategiesEnum.NOTHING, async (req, res) => {
             try {
                 const { first_name, last_name, role, email, password } = req.body;
 

@@ -30,8 +30,10 @@ app.use('/api/users', usersRouter.getRouter());
 app.use('/api/courses', coursesRouter.getRouter());
 app.use('/api/students', studentsRouter.getRouter());
 
+//localhost
+
 try {
-    await mongoose.connect('mongodb+srv://alexpinaida39760:xHCGeiHfxtywJWXe@cluster39760ap.abysesb.mongodb.net/2dapractica?retryWrites=true&w=majority');
+    await mongoose.connect('mongodb://mongo:27017/docker-compose-39760?retryWrites=true&w=majority');
     console.log('DB CONNECTED')
 } catch (error) {
     console.log(error);

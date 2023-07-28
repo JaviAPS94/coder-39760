@@ -1,0 +1,16 @@
+services:
+  web:
+    build: .
+    depends_on:
+      - mongo
+    ports:
+      - 8080:8080
+    volumes:
+      - .:/app/
+      - /app/node_modules
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - ~/mongo:/data/db
