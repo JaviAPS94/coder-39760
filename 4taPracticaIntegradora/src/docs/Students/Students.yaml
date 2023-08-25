@@ -1,0 +1,55 @@
+paths:
+  /api/students:
+    get:
+      summary: Obtiene el listado de todos los estudiantes
+      tags:
+        - Students
+      responses:
+        "200":
+          description: Los estudiantes fueron obtenidos satisfactoriamente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#components/schemas/Student'
+        "500":
+          description: Error interno del servidor, usualmente generado por una query defectuosa
+components:
+  schemas:
+    Student:
+      type: object
+      properties:
+        _id:
+          type: ObjectId
+          description: Id autogenerardo de mongodb
+        first_name:
+          type: String
+          description: Nombre del estudiante
+        last_name:
+          type: String
+          description: Apellido del estudiante
+        email:
+          type: String
+          description: Correo del estudiante
+        dni:
+          type: Number
+          description: Dni del estudiante
+        birth_date:
+          type: Date
+          description: Fecha de nacimiento del estudiante
+        gender:
+          type: String
+          description: Genero del estudiante
+        courses:
+          type: Array
+          description: Cursos que tiene asignado el estudiante
+      example:
+        _id: ObjectId('HASDYF34534FGFDG')
+        first_name: Coder
+        last_name: House
+        email: ch@coderhouse.com
+        dni: 1234
+        birth_date: 2020-05-06
+        gender: M
+        courses: []
