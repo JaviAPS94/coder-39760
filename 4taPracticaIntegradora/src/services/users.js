@@ -1,9 +1,7 @@
-// import UsersRepository from "../repositories/users.js";
 import { IncorrectLoginCredentials, UserAlreadyExists, UserNotFound } from "../utils/custom-exceptions.js";
 import { loginNotification } from "../utils/custom-html.js";
 import { isValidPassword, generateToken, createHash } from "../utils/utils.js";
 import { sendEmail } from "./mail.js";
-// import { Users } from "../dao/factory.js";
 
 export default class UsersService {
     constructor(usersRepository) {
