@@ -40,7 +40,7 @@ class TicketManager {
         const evento = {
             nombre,
             lugar,
-            precio,
+            precio: precio + precio*this.#precioBaseGanancia,
             capacidad,
             fecha,
             participantes: []

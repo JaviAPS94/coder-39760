@@ -15,6 +15,25 @@ const objetos = [
 	}
 ]
 
+// Otra forma
+let newArray = [];
+let total = 0;
+
+objetos.forEach(objeto => {
+	const keys = Object.keys(objeto);
+	const values = Object.values(objeto);
+
+	total += values.reduce((valorInicial, valorAcumulado) => valorAcumulado + valorInicial);
+
+	keys.forEach(key => {
+		if (!newArray.includes(key)) newArray.push(key);
+	})
+})
+
+console.log(newArray);
+console.log(total);
+
+
 function getAllProductTypes(array) {
 	if (array.length === 0) return `Array must contain almost one object`;
 
@@ -40,21 +59,3 @@ function getAllProductTypes(array) {
 }
 
 console.log(getAllProductTypes(objetos));
-
-// Otra forma
-let newArray = [];
-let total = 0;
-
-objetos.forEach(objeto => {
-	const keys = Object.keys(objeto);
-	const values = Object.values(objeto);
-
-	total += values.reduce((valorInicial, valorAcumulado) => valorAcumulado + valorInicial);
-
-	keys.forEach(key => {
-		if (!newArray.includes(key)) newArray.push(key);
-	})
-})
-
-console.log(newArray);
-console.log(total);
